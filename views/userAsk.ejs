@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Icon in website -->
+    <link rel="icon" href="image/logo.ico">
+    <link rel="apple-touch-icon" href="image/logo.ico">
+    <link rel="apple-touch-icon-precomposed" href="image/logo.ico">
+    <link rel="shortcut icon" href="image/logo.ico">
+
+    <!-- Css Links -->
+    <link rel="stylesheet" href="users.css">
+
+    <!-- Fonts links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;700&family=Righteous&display=swap" rel="stylesheet">
+
+    <title>Users</title>
+</head>
+<body>
+    <%- include('partials/header') %> 
+    <!-- End header  -->
+
+    <div class="asks">
+        <% for( let i = 0; i < toasks.length; i++ ) { %>
+            <div class="askConter">
+                <div class="userTitle">
+                    <h3><%= i + 1 %> - </h3>
+                    <img src="/image/men.png" alt="human">
+                    <h3><%= toasks[i].userName %></h3>
+                </div>
+                <hr>
+                <div class="ask">
+                    <p><%= toasks[i].Ask %></p>
+                </div>
+                <div class="answerConter">
+                <% if (toasks[i].answer === '') { %>
+                        <h3>سيتم الرد فى أقرب وقت</h3>
+                        <div id="adminAnswer" data-Id="<%= toasks[i].id %>"></div>
+                <% } else { %>
+                        <h3>الأجابة</h3>
+                        <hr>
+                        <div class="answer">
+                            <p><%= toasks[i].answer %></p>
+                        </div>
+                <% } %> 
+                </div>
+            </div>
+        <% } %>
+    </div> 
+    <script>
+        if (localStorage.getItem('User') === 'Admin') {
+            let askId = document.getElementById('adminAnswer').getAttribute('data-Id')
+            document.getElementById('adminAnswer').innerHTML = `                            <form action="/UserAsk" method="post" id="formAnswer">
+                                <input type="checkbox" name="askId" value="${askId}" checked>
+                                <textarea name="answer" id="answer"></textarea>
+                                <button>رد</button>
+                            </form>`
+                            document.getElementById('formAnswer').onsubmit = function() {
+                                let answer = document.getElementById('answer').value
+                                let all = false
+                    
+                                if (answer !== '') {
+                                    all = true
+                                }
+                                if (all = true) {
+                                    return true
+                                }
+                                return false
+                            }
+        }
+
+
+    </script>
+</body>
+</html>

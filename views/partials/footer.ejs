@@ -1,0 +1,45 @@
+<style>
+    footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        /* position: absolute; */
+        bottom: 0;
+        left: 0;
+    }
+    .maker {
+        width: 100%;
+        background-color: rgb(1, 19, 110);
+        padding: 10px;
+        font-size: 1rem;
+        color: var(--main-color);
+        text-align: center;
+        font-family: var(--main-font);
+    }
+    .date {
+        width: 100%;
+        background-color: rgb(2, 0, 44);
+        padding: 5px;
+        font-size: 0.8rem;
+        color: var(--open-white);
+        text-align: center;
+        font-family: var(--other-font);
+    }
+</style>
+
+<footer>
+    <div class="maker">
+        <p>Made by all ❤ By <em>Hassan</em></p>
+    </div>
+    <div class="date">
+        <p id="copyright"></p>
+    </div>
+</footer>
+
+<script>
+    let time = new Date()
+    let year = time.getFullYear()
+    document.getElementById('copyright').innerHTML = `&copy; Copyright ${year} Ask Me`
+</script>

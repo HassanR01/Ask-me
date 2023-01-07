@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Icon in website -->
+    <link rel="icon" href="image/logo.ico">
+    <link rel="apple-touch-icon" href="image/logo.ico">
+    <link rel="apple-touch-icon-precomposed" href="image/logo.ico">
+    <link rel="shortcut icon" href="image/logo.ico">
+
+    <!-- Css Links -->
+    <link rel="stylesheet" href="contact.css">
+
+    <!-- Fonts links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;700&family=Righteous&display=swap" rel="stylesheet">
+
+    <title>Contact</title>
+</head>
+<body>
+    <%- include('partials/header') %> 
+
+    <div class="container">
+
+        <h1 class="brand"><span>Contact With Me</span></h1>
+    
+        <div class="wrapper">
+    
+            <!-- COMPANY INFORMATION -->
+            <div class="company-info">
+                <h3>Web Designer</h3>
+    
+                <ul>
+                    <li>Alexandria</li>
+                    <li></i>015558679..</li>
+                    <li></i>hkrock236@gmail.com</li>
+                </ul>
+            </div>
+            <!-- End .company-info -->
+    
+            <!-- CONTACT FORM -->
+            <div class="contact">
+                <h3>E-mail Us</h3>
+    
+                <form id="contact-form">
+    
+                    <p>
+                        <label>Name</label>
+                        <input type="text" name="name" id="name" required>
+                    </p>
+    
+                    <p>
+                        <label>E-mail Address</label>
+                        <input type="email" name="email" id="email" required>
+                    </p>
+    
+                    <p>
+                        <label>Phone Number</label>
+                        <input type="text" name="phone" id="phone">
+                    </p>
+    
+                    <p class="full">
+                        <label>Message</label>
+                        <textarea name="message" rows="5" id="message"></textarea>
+                    </p>
+    
+                    <p class="full">
+                        <button type="submit">Submit</button>
+                    </p>
+    
+                </form>
+                <!-- End #contact-form -->
+            </div>
+            <!-- End .contact -->
+    
+        </div>
+        <!-- End .wrapper -->
+    </div>
+    <!-- End .container -->
+</body>
+</html>

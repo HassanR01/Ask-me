@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Icon in website -->
+    <link rel="icon" href="image/logo.ico">
+    <link rel="apple-touch-icon" href="image/logo.ico">
+    <link rel="apple-touch-icon-precomposed" href="image/logo.ico">
+    <link rel="shortcut icon" href="image/logo.ico">
+
+    <!-- Css Links -->
+    <link rel="stylesheet" href="asks.css">
+
+    <!-- Fonts links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;700&family=Righteous&display=swap" rel="stylesheet">
+
+    <title>Asks</title>
+</head>
+<body>
+    <%- include('partials/header') %> 
+    <!-- End header -->
+
+    <div class="addNewAsk">
+        <div class="contener">
+            <h2>أضافة سؤال</h2>
+            <hr>
+            <div id="formAdd">
+                <form action="/Asks" method="POST" id="NewAsk">
+                    <div class="userName">
+                        <h5>اسمك</h5>
+                        <input type="text" name="userName" id="userName" placeholder="ما اسمك ؟" required>
+                    </div>
+                    <div class="contentAsk">
+                        <h5>ما هو سؤالك</h5>
+                        <textarea name="ask" id="ask" placeholder="أكتب سؤالك بالتفصيل" required></textarea>
+                        <p id="errAlart"></p>
+                        <p>ملحوظة : سيرى الجميع سؤالك حتى تعم الفائدة على الجميع </p>
+                    </div>
+                    <button>إرسال السؤال</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let sending = 1 ;
+        let arrAlart = document.getElementById('errAlart')
+        document.getElementById('NewAsk').onsubmit = () => {
+            let inpuser = document.getElementById('userName').value
+            let inpask = document.getElementById('ask').value
+            let all = false
+
+            if (inpuser === 'AdminHK') {
+                localStorage.setItem('User' , 'Admin')
+            } else {
+                localStorage.setItem('User' , 'Member')
+            }
+            if (inpuser !== '' && inpask !== '' && inpuser.length < 15 ) {
+                all = true
+                arrAlart.innerHTML = ''
+
+            } else {
+                arrAlart.innerHTML = 'يجب ان يتكون الاسم من 15 حرفاً او أقل'
+            }
+            if (all === true && sending !== 0) {
+                sending -= 1 ;
+                return true
+            }
+
+            return false
+            
+
+        }
+    </script>
+</body>
+</html>
